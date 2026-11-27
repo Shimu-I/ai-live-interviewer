@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}AI Live Interviewer{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-brand" href="/">AI Live Interviewer</a>
+    <div class="nav-links">
+      {% if user %}
+        <span class="hint">{{ user.email }}</span>
+        <a href="/setup">New Interview</a>
+        <a href="/logout">Log out</a>
+      {% else %}
+        <a href="/login">Log in</a>
+        <a class="btn" href="/signup">Get started</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

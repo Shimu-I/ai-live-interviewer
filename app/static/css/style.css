@@ -1,0 +1,322 @@
+/* AI Live Interviewer — minimal, readable, forest green theme */
+
+:root {
+  --forest-900: #0f2b1d;
+  --forest-800: #16412b;
+  --forest-700: #1e5a3a;
+  --forest-600: #2d6a4f;
+  --forest-500: #40916c;
+  --forest-400: #52b788;
+  --forest-100: #e7f3ec;
+  --forest-50:  #f5faf7;
+
+  --ink: #1b1f1d;
+  --ink-soft: #4b5a53;
+  --border: #dbe8e0;
+  --white: #ffffff;
+
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(15, 43, 29, 0.06), 0 4px 16px rgba(15, 43, 29, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--forest-50);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+a { color: var(--forest-700); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Nav ─────────────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--forest-800);
+  letter-spacing: -0.01em;
+}
+
+.nav-links { display: flex; gap: 20px; align-items: center; font-size: 0.95rem; }
+
+/* ── Layout ──────────────────────────────────────────── */
+.page { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+.page-narrow { max-width: 480px; margin: 0 auto; padding: 64px 24px; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+}
+
+h1 { font-size: 1.9rem; margin: 0 0 8px; color: var(--forest-900); letter-spacing: -0.02em; }
+h2 { font-size: 1.3rem; margin: 0 0 16px; color: var(--forest-900); }
+.subtitle { color: var(--ink-soft); margin: 0 0 32px; font-size: 1.05rem; }
+
+/* ── Forms ───────────────────────────────────────────── */
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 18px 0 6px;
+}
+.card > form > label:first-of-type { margin-top: 0; }
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"],
+select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--forest-50);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--forest-500);
+  background: var(--white);
+}
+textarea { resize: vertical; min-height: 90px; }
+
+.button-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  /* Explicit margin: 0 so pills are never affected by the generic label
+     spacing rules above — they're spaced by .button-group's gap instead. */
+  margin: 0;
+  border: 1px solid var(--border);
+  background: var(--forest-50);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.pill input { display: none; }
+.pill.selected, .pill:has(input:checked) {
+  background: var(--forest-600);
+  border-color: var(--forest-600);
+  color: var(--white);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--forest-600);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.btn:hover { background: var(--forest-700); text-decoration: none; }
+.btn-block { width: 100%; }
+.btn-secondary {
+  background: var(--white);
+  color: var(--forest-700);
+  border: 1px solid var(--forest-500);
+}
+.btn-secondary:hover { background: var(--forest-100); }
+
+.error-box {
+  background: #fdecea;
+  border: 1px solid #f3b6ae;
+  color: #8a1f11;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.hint { color: var(--ink-soft); font-size: 0.85rem; margin-top: 4px; }
+
+/* ── Landing hero ────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 96px 24px;
+}
+.hero h1 { font-size: 2.6rem; }
+.hero .subtitle { max-width: 560px; margin: 0 auto 32px; }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 64px;
+}
+.feature-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: left;
+}
+.feature-card h3 { margin: 0 0 8px; color: var(--forest-800); font-size: 1.05rem; }
+.feature-card p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+.status-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--forest-500);
+  margin-right: 6px;
+}
+
+/* ── Live interview page ─────────────────────────────── */
+.interview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--forest-800);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 16px;
+}
+.timer.timer-low { color: #a3402b; border-color: #f0b79e; }
+
+.orb-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 24px;
+  margin-bottom: 32px;
+}
+
+.orb-label { color: var(--ink-soft); margin: 20px 0 24px; font-size: 0.95rem; }
+
+#start-controls, #live-controls { display: flex; gap: 12px; }
+
+/* Orb itself */
+.orb {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orb-core {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--forest-400), var(--forest-700));
+  box-shadow: 0 8px 24px rgba(15, 43, 29, 0.22);
+  transition: transform 0.3s ease;
+}
+.orb-ring {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid var(--forest-400);
+  opacity: 0;
+}
+
+/* idle */
+.orb[data-state="idle"] .orb-core { transform: scale(0.92); opacity: 0.85; }
+
+/* connecting */
+.orb[data-state="connecting"] .orb-ring {
+  opacity: 0.6;
+  animation: orb-spin 1.1s linear infinite;
+  border-style: dashed;
+}
+
+/* listening — gentle pulse */
+.orb[data-state="listening"] .orb-core { animation: orb-pulse 1.6s ease-in-out infinite; }
+.orb[data-state="listening"] .orb-ring { opacity: 0.5; animation: orb-ring-pulse 1.6s ease-in-out infinite; }
+
+/* thinking — orbiting ring */
+.orb[data-state="thinking"] .orb-ring,
+.orb[data-state="transcribing"] .orb-ring {
+  opacity: 0.7;
+  border-style: dotted;
+  animation: orb-spin 0.9s linear infinite;
+}
+.orb[data-state="thinking"] .orb-core { transform: scale(0.96); }
+
+/* speaking — livelier pulse */
+.orb[data-state="speaking"] .orb-core { animation: orb-speak 0.55s ease-in-out infinite; }
+.orb[data-state="speaking"] .orb-ring { opacity: 0.6; animation: orb-ring-pulse 0.55s ease-in-out infinite; }
+
+/* paused */
+.orb[data-state="paused"] .orb-core { opacity: 0.5; }
+
+/* finished */
+.orb[data-state="finished"] .orb-core { background: radial-gradient(circle at 35% 30%, var(--forest-500), var(--forest-800)); }
+
+/* error */
+.orb[data-state="error"] .orb-core { background: radial-gradient(circle at 35% 30%, #e79c8a, #8a1f11); }
+
+@keyframes orb-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@keyframes orb-speak {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
+}
+@keyframes orb-ring-pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+@keyframes orb-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.transcript-card { max-width: 640px; margin: 0 auto; }
+.transcript {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.transcript-empty { color: var(--ink-soft); font-size: 0.9rem; }
+.transcript-line { padding: 10px 14px; border-radius: 8px; font-size: 0.92rem; }
+.transcript-line.ai { background: var(--forest-100); color: var(--forest-900); align-self: flex-start; max-width: 90%; }
+.transcript-line.user { background: var(--forest-600); color: var(--white); align-self: flex-end; max-width: 90%; }
+.transcript-speaker { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; display: block; margin-bottom: 2px; }
+
+/* ── Interview layout: orb + controls on the left, transcript on the right ── */
+.interview-page { max-width: 1100px; }
+.interview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.interview-layout .orb-stage { margin-bottom: 0; padding: 32px 16px; }
+.interview-layout .transcript-card { max-width: none; margin: 0; }
+.interview-layout .transcript { max-height: 520px; }
+@media (max-width: 820px) {
+  .interview-layout { grid-template-columns: 1fr; }
+}
