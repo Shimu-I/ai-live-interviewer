@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Interview ready — AI Live Interviewer{% endblock %}
+{% block content %}
+<div class="page-narrow">
+  <div class="card">
+    <h2><span class="status-dot"></span>Interview created</h2>
+    <p class="subtitle" style="margin-bottom:8px;">
+      {{ interview.job_role }} · {{ interview.interview_type.value.title() }} ·
+      {{ interview.duration // 60 }} min · {{ interview.difficulty.value.title() }}
+    </p>
+
+    {% if interview.status.value in ("COMPLETED", "QUIT", "TIME_EXPIRED") %}
+      <p class="hint">
+        This interview has ended (status: <code>{{ interview.status.value }}</code>).
+        Interview history and transcript downloads are coming in a later phase.
+      </p>
+    {% else %}
+      <p class="hint">
+        When you're ready — find a quiet spot and make sure your microphone is
+        working. The AI will greet you and ask the first question as soon as
+        you begin.
+      </p>
+      <a class="btn" href="/interviews/{{ interview.id }}/live" style="margin-top:20px; display:inline-block;">
+        Begin interview
+      </a>
+    {% endif %}
+
+    <div style="margin-top:16px;">
+      <a class="btn btn-secondary" href="/setup">Set up another</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Set up your interview — AI Live Interviewer{% endblock %}
+{% block content %}
+<div class="page">
+  <h1>Set up your interview</h1>
+  <p class="subtitle">Pick a role and a duration. Everything else — the questions, the follow-ups, the pacing — the AI figures out live.</p>
+
+  <div class="card">
+    <form method="post" action="/interviews">
+
+      <label>Job role</label>
+      <select name="job_role" required>
+        {% for role in job_roles %}
+        <option value="{{ role }}">{{ role }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Experience level</label>
+      <select name="experience_level">
+        {% for lvl in experience_levels %}
+        <option value="{{ lvl }}">{{ lvl }}</option>
+        {% endfor %}
+      </select>
+
+      <label>Interview type</label>
+      <div class="button-group">
+        {% for t in interview_types %}
+        <label class="pill">
+          <input type="radio" name="interview_type" value="{{ t }}" {% if t == "MIXED" %}checked{% endif %} />
+          {{ t.title() }}
+        </label>
+        {% endfor %}
+      </div>
+
+      <label>Difficulty</label>
+      <div class="button-group">
+        {% for d in difficulties %}
+        <label class="pill">
+          <input type="radio" name="difficulty" value="{{ d }}" {% if d == "ADAPTIVE" %}checked{% endif %} />
+          {{ d.title() }}
+        </label>
+        {% endfor %}
+      </div>
+
+      <label>Duration</label>
+      <div class="button-group">
+        {% for d in durations %}
+        <label class="pill">
+          <input type="radio" name="duration_minutes" value="{{ d }}" {% if d == 10 %}checked{% endif %} />
+          {{ d }} min
+        </label>
+        {% endfor %}
+      </div>
+
+      <label for="custom_duration_minutes">Or enter a custom length in minutes (optional)</label>
+      <input type="number" id="custom_duration_minutes" name="custom_duration_minutes" min="1" max="120" placeholder="e.g. 15" />
+      <p class="hint">If you fill this in, it overrides the length selected above.</p>
+
+      <label for="job_description">Job description (optional)</label>
+      <textarea id="job_description" name="job_description" placeholder="Paste a job description and the AI will prioritize covering the required skills."></textarea>
+
+      <label for="resume_text">Resume / background (optional)</label>
+      <textarea id="resume_text" name="resume_text" placeholder="Paste a summary of your experience, projects, and skills so the AI can ask about them specifically."></textarea>
+
+      <button class="btn" type="submit" style="margin-top:28px;">Create interview</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
