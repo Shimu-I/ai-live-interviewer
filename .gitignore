@@ -1,5 +1,17 @@
 .env
+.env.local
+
 .venv/
 __pycache__/
 *.pyc
 *.db
+
+backups/
+updates/*.zip
+
+.DS_Store
+*.log
+
+# Downloaded Piper voice models (large; fetched by scripts/setup-local-ai.sh)
+*.onnx
+*.onnx.json
