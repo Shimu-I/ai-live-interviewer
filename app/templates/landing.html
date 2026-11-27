@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}AI Live Interviewer — Practice real interviews{% endblock %}
+{% block content %}
+<div class="hero">
+  <h1>Practice interviews with an AI that actually listens.</h1>
+  <p class="subtitle">
+    No question lists. No scripts. A live AI interviewer that asks a question,
+    listens to your answer, and follows up naturally — like a real recruiter would.
+  </p>
+  {% if user %}
+    <a class="btn" href="/setup">Start an interview</a>
+  {% else %}
+    <a class="btn" href="/signup">Start practicing free</a>
+  {% endif %}
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>Natural, adaptive interviews</h3>
+      <p>The AI follows up on what you actually say — deeper on strong answers, clarifying on vague ones.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Any role, any duration</h3>
+      <p>Pick your job role, interview type, and a 1 to 20 minute session that fits your schedule.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Practice what you missed</h3>
+      <p>Every weak or unanswered question gets saved so you can practice it again later.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Track your progress</h3>
+      <p>See communication, technical depth, and problem solving improve over time.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
